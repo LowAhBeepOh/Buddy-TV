@@ -1,0 +1,71 @@
+{
+  "name": "buddy-tv",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:dir": "electron-builder --dir",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "media-player",
+    "video",
+    "desktop",
+    "movies",
+    "tv-series"
+  ],
+  "author": "LoaBeepo",
+  "license": "MIT",
+  "dependencies": {
+    "extract-zip": "^2.0.1",
+    "ffmpeg-static": "^5.3.0",
+    "libass-wasm": "^4.1.0"
+  },
+  "devDependencies": {
+    "electron": "^40.6.1",
+    "electron-builder": "^26.8.1"
+  },
+  "description": "Interface for watching local movies / series you have.",
+  "build": {
+    "appId": "com.buddytv.app",
+    "productName": "Buddy TV",
+    "icon": "Assets/buddy-logo.svg",
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "Assets/**/*",
+      "Movies/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "Assets/buddy-logo.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
