@@ -1,0 +1,28 @@
+{
+  "movies": {
+    "example_id": {
+      "title": "Very Sigma Example Title",
+      "type": "movie",
+      "pg_rating": "PG-18",
+      "duration": "1h 7m",
+      "video": {
+        "filename": "meow.mp4"
+      },
+      "subtitles": {
+        "filename": "meow.srt/.ssa/.vtt"
+      },
+      "description": "cool description of the movie.",
+      "extras": {
+        "creator": "eeee yoink",
+        "year": 2014,
+        "genre": [
+          "lgbtq",
+          "action"
+        ]
+      },
+      "thumbnail": {
+        "filename": "meow.jpg"
+      }
+    }
+  }
+}

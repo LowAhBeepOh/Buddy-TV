@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: local-video:; media-src 'self' blob: local-video:; worker-src 'self' blob:;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buddy TV</title>
+    <!-- Google Fonts: Inter Tight -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app">
+        
+        <!-- Top Navigation -->
+        <nav id="top-nav">
+            <div class="logo-container">
+                <div class="logo"></div>
+            </div>
+            
+            <div class="nav-pills">
+                <button class="nav-pill active" id="home-btn" data-view="home">Home</button>
+                <!-- Can add 'Series', 'Movies' pills later -->
+            </div>
+
+            <!-- Empty right side for balance or future profile/search -->
+            <div class="nav-right">
+                <div class="search-trigger">
+                    <i class="material-icons">search</i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Exit Button (Fixed Bottom Left) -->
+        <button id="exit-btn" title="Exit App">
+            <i class="material-icons">exit_to_app</i>
+        </button>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            
+            <!-- Home / Movie Grid View -->
+            <section id="home-view" class="view active">
+                
+                <!-- Search Overlay (Hidden by default, toggled via nav) -->
+                <div id="search-overlay" class="search-overlay">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" id="search-input" placeholder="Search movies, series, genres...">
+                    </div>
+                </div>
+
+                <div id="continue-watching-section" class="hidden">
+                    <h2 class="section-title">Continue Watching</h2>
+                    <div class="continue-watching-grid" id="continue-watching-grid">
+                        <!-- Continue Watching Cards injected here -->
+                    </div>
+                </div>
+
+                <header class="section-header">
+                    <h2 class="section-title" id="main-grid-title">All Movies & Series</h2>
+                    <button id="back-to-home-btn" class="pill-btn hidden">← Back to Home</button>
+                </header>
+                
+                <div class="movie-grid" id="movie-grid">
+                    <!-- Movie/Series Cards will be injected here via JS -->
+                </div>
+            </section>
+
+            <!-- Video Player View -->
+            <section id="player-view" class="view">
+                <div class="video-container">
+                    <video id="video-player">
+                        <!-- Source will be set dynamically -->
+                    </video>
+                    
+                    <!-- Custom Controls Overlay -->
+                    <div class="controls-overlay" id="controls-overlay">
+                        <!-- Top Bar (Back button, Title) -->
+                        <div class="controls-top">
+                            <button id="back-btn" class="control-btn">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Back</span>
+                            </button>
+                            <h2 id="video-title">Video Title</h2>
+                        </div>
+
+                        <!-- Center Play/Pause (optional, often hidden) -->
+                        
+                        <!-- Bottom Bar (Progress, Time, Volume) -->
+                        <div class="controls-bottom">
+                            <div class="progress-wrapper">
+                                <div class="progress-bar-container" id="progress-container">
+                                    <div class="progress-bar" id="progress-bar"></div>
+                                    <div class="progress-thumb" id="progress-thumb"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="controls-row">
+                                <div class="left-controls">
+                                    <button id="play-pause-btn" class="control-btn" title="Play/Pause">
+                                        <i class="material-icons">play_arrow</i>
+                                    </button>
+                                    <span id="time-display">0:00 / 0:00</span>
+                                </div>
+                                
+                                <div class="right-controls">
+                                    <button id="subtitles-btn" class="control-btn" title="Subtitles">
+                                        <i class="material-icons">subtitles</i>
+                                    </button>
+                                    <button id="volume-btn" class="control-btn" title="Volume">
+                                        <i class="material-icons">volume_up</i>
+                                    </button>
+                                    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+                                    <button id="fullscreen-btn" class="control-btn" title="Fullscreen">
+                                        <i class="material-icons">fullscreen</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Details Overlay -->
+        <div id="details-overlay" class="details-overlay hidden" aria-hidden="true">
+            <div class="details-backdrop" id="details-backdrop"></div>
+            <div class="details-modal" role="dialog" aria-modal="true" aria-label="Title Details">
+                <button id="details-close" class="details-close" title="Close">
+                    <i class="material-icons">close</i>
+                </button>
+
+                <div class="details-hero">
+                    <div class="details-hero-media">
+                        <img id="details-hero-image" class="details-hero-image" alt="">
+                        <div class="details-hero-gradient"></div>
+                    </div>
+
+                    <div class="details-hero-content">
+                        <h1 id="details-title" class="details-title"></h1>
+                        <div class="details-meta" id="details-meta"></div>
+                        <p id="details-description" class="details-description"></p>
+
+                        <div class="details-actions">
+                            <button id="details-primary-btn" class="details-primary-btn">
+                                <i class="material-icons">play_arrow</i>
+                                <span id="details-primary-label">Watch</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="details-episodes" class="details-episodes hidden">
+                    <h2 class="details-section-title">Episodes</h2>
+                    <div id="details-episodes-list" class="details-episodes-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for SFX -->
+    <audio id="sfx-hover" src="" preload="auto"></audio> <!-- Need to find/generate sound -->
+    <audio id="sfx-select" src="" preload="auto"></audio>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
