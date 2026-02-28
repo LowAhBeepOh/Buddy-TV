@@ -153,7 +153,6 @@ buddy-tv/
 - **Electron** - Desktop application framework
 - **HTML5/CSS3/JavaScript** - Frontend technologies
 - **Node.js** - Runtime environment
-- **CSS Grid/Flexbox** - Modern layout
 
 ## 🤝 Contributing
 
@@ -175,10 +174,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 **Bug Reports**: [Create an issue](https://github.com/yourusername/buddy-tv/issues)
-- 💡 **Feature Requests**: [Start a discussion](https://github.com/yourusername/buddy-tv/discussions)
+- 🐛 **Bug Reports**: [Create an issue](https://github.com/lowahbeepoh/buddy-tv/issues)
+- 💡 **Feature Requests**: [Start a discussion](https://github.com/lowahbeepoh/buddy-tv/discussions)
 - 📧 **Questions**: Use the discussions section
 
 ---
 
-**Made with ❤️ by the Buddy TV team**
+**Made with ❤️ by the LoaBeepo**
